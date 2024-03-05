@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { product } from './../../Models/Product';
 
 @Component({
   selector: 'product-list',
@@ -6,6 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent {
+
+  selectedProduct: product;
   products = [
     {
       id: 1,
@@ -532,4 +535,17 @@ export class ProductListComponent {
       slug: "michael-feburary-sk8-hi"
     }
   ];
+  totalProductCount = this.products.length;
+  totalProductInStock = this.products.filter( p => p.is_in_inventory == true).length;
+  totalProductOutOfStock = this.products.filter( p => p.is_in_inventory == false).length;
+
+  @Input()
+  searchText: string = '';
+
+  selectedFilterRadioButton: string = 'all';
+
+  onFilterChanged(value: string){
+    console.log(value);
+    this.selectedFilterRadioButton = value;
+  }
 }

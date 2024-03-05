@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./Container.component.css']
 })
 export class ContainerComponent {
-  listOfString: string[] = ['Maek', 'Steve', 'Merry', 'John', 'Sarah']
+  listOfString: string[] = ['Maek', 'Steve', 'Merry', 'John', 'Sarah'];
+
+  searchText: string = '';
+
+  setSearchText(value: string){
+    this.searchText = value;
+  }
 }
